@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book';
 
@@ -28,11 +29,11 @@ class BookLibrary extends Component {
     })
   }
 
-  updateBook = (event, book) => {
-    book.shelf = event.target.value;
+  updateBook = (value, book) => {
+    book.shelf = value;
     BooksAPI.update(book, book.shelf);
     this.setState({book})
-    console.log(event.target.value);
+    console.log(value);
     console.log(book);
   }
 
@@ -64,7 +65,7 @@ class BookLibrary extends Component {
           </div>
         </div>
         <div className="open-search">
-          <a>Add a book</a>
+          <Link to='/search'>Add a book</Link>
         </div>
       </div>
     )
