@@ -51,7 +51,7 @@ class BookLibrary extends Component {
                 <div className="bookshelf-books">
                   <ol className="books-grid">
                     {this.state.books.filter(book => book.shelf === shelf.id).map(book => (
-                      <li key={book.id}>
+                      <li key={book.id} className='book-library-items'>
                         <Book
                           book={book}
                           onUpdateBook={this.updateBook}

@@ -13,7 +13,9 @@ The application is build up on the Udacity Template:
 
 ## Installation
 * Download and unzip the application
-* Open the folder with the terminal and start with `npm start`
+* Open the application folder with the terminal,
+* install `npm install` and
+* start with `npm start`
 
 ## Usage
 NPM and React must be installed to start this application.
@@ -25,7 +27,6 @@ To uses this application a backend server provided by Udacity hast to be accessi
 
 ## Issues
 * PropTypes not used yet
-
 
 ## Contributing
 This repository is just for the Udacity Review Team. Therefore, we most likely will not accept pull requests.
