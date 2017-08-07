@@ -30,11 +30,11 @@ class BookLibrary extends Component {
   }
 
   updateBook = (value, book) => {
-    book.shelf = value;
-    BooksAPI.update(book, book.shelf);
+    book.shelf = value
+    BooksAPI.update(book, book.shelf)
     this.setState({book})
-    console.log(value);
-    console.log(book);
+    console.log(value)
+    console.log(book)
   }
 
   render() {

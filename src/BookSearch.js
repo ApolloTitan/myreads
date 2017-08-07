@@ -46,8 +46,8 @@ class BookSearch extends Component {
   }
 
   updateBook = (value, book) => {
-    book.shelf = value;
-    BooksAPI.update(book, book.shelf);
+    book.shelf = value
+    BooksAPI.update(book, book.shelf)
     this.setState({book})
   }
 
