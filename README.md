@@ -21,6 +21,7 @@ The application is build up on the Udacity Template:
 NPM and React must be installed to start this application.
 Also the following libraries must be installed:
 * React Router: `npm install --save react-router-dom`
+* To connect the Udacity-Server "ThisIsMyToken8493" is used as token
 
 ## Backend Server
 To uses this application a backend server provided by Udacity hast to be accessible.
