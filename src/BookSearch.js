@@ -8,37 +8,42 @@ const MAX_RESUTLS = 5;
 class BookSearch extends Component {
   state = {
     query: '',
-    books: []
+    books: [],
+    searchResults: [],
+    libraryBooks: []
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ libraryBooks: books })
+    })
   }
 
   updateQuery = (query) => {
     let self = this
-    let temp_shelf
+    let finalResult = []
+    this.setState({query})
 
-     this.setState({query})
-     if (query) {
-       BooksAPI.search(query, MAX_RESUTLS).then((books) => {
-         self.setState({books})
-       })
-
-
-     }
+    if (query) {
+      BooksAPI.search(query, MAX_RESUTLS).then((search_books) => {
+        if (!search_books.length > 0) {
+          return
+        } else {
+          search_books.forEach(function(sb) {
+            let tempBook = sb;
+            tempBook.shelf = "none"
+            self.state.libraryBooks.forEach(function(lb) {
+              if (sb.id === lb.id) {
+                tempBook = lb
+              }
+            })
+            finalResult.push(tempBook)
+          })
+        }
+        this.setState({ books: finalResult})
+      })
+    }
   }
-
-
-  getShelfInformation = (old_book) => {
-    BooksAPI.get(old_book.id).then((book_with_shelf_info) => {
-      // this.setState({book_with_shelf_info})
-      this.setState((old_book) => ({
-        book: book_with_shelf_info
-      }));
-      console.log("new book: ", this.state.book);
-    })
-    // this.setState({book})
-
-
-  }
-
 
   updateBook = (value, book) => {
     book.shelf = value;
@@ -71,7 +76,6 @@ class BookSearch extends Component {
                   <Book
                     book={book}
                     onUpdateBook={this.updateBook}
-                    updateShelf={this.getShelfInformation}
                   />
                 </li>
               ))

@@ -23,8 +23,8 @@ class Book extends Component {
           </div>
           <div className="book-title">{book.title}</div>
           <div className="book-authors"><BookAuthors authors={book.authors} /></div>
-          <div>{book.shelf}</div>
-          <div>{book.id}</div>
+          {/* <div>{book.shelf}</div>
+          <div>{book.id}</div> */}
         </div>
       </div>
     )
